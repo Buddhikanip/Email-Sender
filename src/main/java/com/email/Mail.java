@@ -17,7 +17,7 @@ public class Mail {
     MimeMessage mimeMessage = null;
 
     String username = ""; // paste your email
-    String password = "" // paste email app password;
+    String password = ""; // paste email app password;
     String host = "smtp.gmail.com";
 
     public void setupServerProperties() {
