@@ -7,6 +7,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
@@ -64,7 +65,12 @@ public class Mail {
         bodyPart.setText(body, "utf-8");
 
         MimeBodyPart attachmentPart = new MimeBodyPart();
-        attachmentPart.attachFile("C:\\Users\\bnsbu\\Downloads\\Resume\\Email\\src\\main\\resources\\Buddhika_resume.pdf");
+        String attachmentPath = "src/main/resources/Buddhika_resume.pdf"; // Local path
+        File resumeFile = new File(attachmentPath);
+        if (!resumeFile.exists()) {
+            attachmentPath = "/app/resources/Buddhika_resume.pdf"; // Docker path
+        }
+        attachmentPart.attachFile(attachmentPath);
 
         MimeMultipart multipart = new MimeMultipart();
         multipart.addBodyPart(bodyPart);

@@ -6,4 +6,5 @@ RUN mvn clean package
 FROM openjdk:17
 WORKDIR /app
 COPY --from=builder /app/target/Email-1.0-SNAPSHOT.jar app.jar
+COPY src/main/resources /app/resources
 ENTRYPOINT ["java", "-jar", "app.jar"]
