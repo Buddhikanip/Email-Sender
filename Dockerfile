@@ -1,7 +1,7 @@
 FROM maven:3.8.1-openjdk-17 AS builder
 WORKDIR /app
 COPY . .
-RUN mvn clean package
+RUN mvn clean package -Dmaven.repo.local=/root/.m2
 
 FROM openjdk:17
 WORKDIR /app

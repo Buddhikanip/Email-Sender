@@ -48,6 +48,14 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Env -->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>java-dotenv</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -82,7 +90,6 @@
             </plugin>
         </plugins>
     </build>
-
 
 
 </project>

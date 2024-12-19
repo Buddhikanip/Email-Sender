@@ -1,0 +1,17 @@
+Dear Sir/Madam,
+
+I hope this message finds you well. My name is {name}, and I am currently a third-year undergraduate studying Computer Science at the University of Colombo School of Computing. I am writing to express my keen interest in securing a Software Engineering internship position at {company}.
+
+Throughout my academic journey, I have built a strong foundation in software development. By actively participating in hackathons and engaging in a variety of external projects, I have greatly enhanced my practical skills. I am excited to apply this knowledge in a professional environment where I can make meaningful contributions to impactful projects.
+
+I am particularly attracted to {company} because of its esteemed reputation in the software development industry, and I would welcome the opportunity to learn from your experienced team.
+
+I have attached my resume for your review and am available for an interview at your earliest convenience.
+
+Thank you for considering my application. I look forward to the possibility of joining {company} as a Software Engineering intern and contributing to your team's success.
+
+Best regards,
+{name}.
+{phone}
+{email}
+{linkedIn}
