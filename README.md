@@ -25,10 +25,10 @@ intern and contributing to your team's success.
 Best regards,
 Buddhika Senanayake.
 +94 71 234 5678
-example@email.com
+bnsbuddhika@gmail.com
 https://www.linkedin.com/in/buddhikanip/
 ```
-**Attachment:** resume.pdf
+**Attachment:** [resume.pdf](src/main/resources/resume.pdf)
 
 
 All the above content can be customized according to your own will.
@@ -36,8 +36,8 @@ All the above content can be customized according to your own will.
 ## Project Structure
 
 ```bash
-.
 ├── Dockerfile
+├── README.md
 ├── docker-compose.yml
 ├── pom.xml
 └── src
@@ -51,7 +51,7 @@ All the above content can be customized according to your own will.
     │   │           └── User.java
     │   └── resources
     │       ├── Emails.csv
-    │       ├── cover_letter.txt
+    │       ├── email_body.txt
     │       └── resume.pdf
     └── test
         └── java
@@ -145,10 +145,10 @@ flowchart TD
     | Pending | Apple   | steve.jobs@apple.com         |
 
     - First column: `status`
-        - Initially you can keep it empty. The program will append the status of the email to that column. 
+      > Initially you can keep it empty. The program will append the status of the email to that column. 
     - Second column: `company name`
     - Third column onwards
-        - Receiving emails under the specified company. One cell can contain only one email. If there's a second or third email for the same company, you can put them in the 4th column onwards
+      > Receiving emails under the specified company. One cell can contain only one email. If there's a second or third email for the same company, you can put them in the 4th column onwards
         
 - **[email\_body.txt](src/main/resources/email_body.txt)**: A customizable template as text file containing email body.
 
@@ -158,7 +158,9 @@ flowchart TD
   I hope this message finds you well. My name is {name}, and I am currently a third-year undergraduate studying 
   Computer Science at the University of Colombo School of Computing. I am writing to express my keen interest in 
   securing a Software Engineering internship position at {company}.
+  
   ...
+  
   I have attached my resume for your review and am available for an interview at your earliest convenience. Thank
   you for considering my application. I look forward to the possibility of joining {company} as a Software Engineering
   intern and contributing to your team's success.
@@ -171,7 +173,7 @@ flowchart TD
   ```
 
 - **[resume.pdf](src/main/resources/resume.pdf)**: Your resume file.
-- **[resume.pdf](src/main/resources/resume.pdf)**: Sample .env file.
+- **[.env.example](.env.example)**: Example .env file.
   
 ```env
 # Email server settings
@@ -184,20 +186,26 @@ EMAIL_SUBJECT=Application for Software Engineering Internship at {company}
 COVER_LETTER=cover_letter.txt
 
 # Personal details for the cover letter
-NAME=John Doe
+NAME=Buddhika Senanayake
 PHONE=+94 71 234 5678
-EMAIL=example@email.com
-LINKEDIN=https://linkedin.com
+EMAIL=bnsbuddhika@gmail.com
+LINKEDIN=https://www.linkedin.com/in/buddhikanip/
 
 # Resume file
 RESUME=resume.pdf
 ```
 
-You can set a .env in the root directory and customize your details.\
+You can set a `.env` in the root directory and customize your details.\
 `EMAIL_USERNAME`: Your email address (send address)\
 `EMAIL_PASSWORD`: 
+
 If you are using Gmail this is a 16-digit passcode that allows a third-party app or device to access your Google Account. (Not your Gmail password)
-[For reference](https://knowledge.workspace.google.com/kb/how-to-create-app-passwords-000009237) 
+[For reference](https://knowledge.workspace.google.com/kb/how-to-create-app-passwords-000009237)
+
+- Copy the `.env.example` file to create your `.env` file:
+    ```bash
+    cp .env.example .env
+    ```
 
 If you are using some other email service your email server access password.
 
