@@ -16,9 +16,10 @@ public class Main {
     private static final String emailUsername = getEnv("EMAIL_USERNAME");
     private static final String emailPassword = getEnv("EMAIL_PASSWORD");
     private static final String emailHost = getEnv("EMAIL_HOST");
+    private static final String emailPort = getEnv("EMAIL_PORT");
 
     private static final String emailSubject = getEnv("EMAIL_SUBJECT");
-    private static final String coverLetter = getEnv("COVER_LETTER");
+    private static final String emailBody = getEnv("EMAIL_BODY");
 
     private static final String name = getEnv("NAME");
     private static final String phone = getEnv("PHONE");
@@ -30,10 +31,10 @@ public class Main {
     public static void main(String[] args) {
         try {
             EmailServer emailServer = new EmailServer(emailHost, emailUsername, emailPassword);
-            User user = new User(name, phone, email, linkedIn, emailSubject, coverLetter, resume);
+            User user = new User(name, phone, email, linkedIn, emailSubject, emailBody, resume);
 
             Mail mail = new Mail();
-            mail.setupServerProperties();
+            mail.setupServerProperties(emailPort);
 
             List<String[]> emailData = readCsv();
             List<String[]> updatedData = new ArrayList<>();

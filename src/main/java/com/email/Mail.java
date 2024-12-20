@@ -19,11 +19,11 @@ public class Mail {
     Session newSession = null;
     MimeMessage mimeMessage = null;
 
-    public void setupServerProperties() {
+    public void setupServerProperties(String port) {
         log.info("Setting up mail server properties...");
 
         Properties properties = System.getProperties();
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
@@ -35,9 +35,9 @@ public class Mail {
         String subject = user.emailSubject().replace("{company}", company);
 
         // Read the cover letter
-        String templatePath = String.format("src/main/resources/%s", user.coverLetter()); // Local path
+        String templatePath = String.format("src/main/resources/%s", user.emailBody()); // Local path
         if (!new File(templatePath).exists()) {
-            templatePath = String.format("/app/resources/%s", user.coverLetter()); // Docker path
+            templatePath = String.format("/app/resources/%s", user.emailBody()); // Docker path
         }
         String bodyTemplate = Files.readString(Paths.get(templatePath));
 
