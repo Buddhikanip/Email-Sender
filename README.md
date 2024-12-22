@@ -99,8 +99,8 @@ flowchart TD
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/Buddhikanip/Email-Sender.git
-   cd Email-Sender
+   git clone https://github.com/Buddhikanip/Mass-Email-Sender.git
+   cd Mass-Email-Sender
    ```
 2. **Set up your .env file**
     - Copy the `.env.example` file to create your `.env` file:
