@@ -38,6 +38,7 @@ All the above content can be customized according to your own will.
 ## Project Structure
 
 ```bash
+.
 ├── Dockerfile
 ├── README.md
 ├── docker-compose.yml
@@ -138,7 +139,7 @@ flowchart TD
 - **[Emails.csv](src/main/resources/Emails.csv)**: Contains the recipient details and sending status.
 
   | Status  | Company | Recipient 1                  | Recipient 2                 | Recipient 3             |
-                                                                                        |---------|---------|------------------------------|-----------------------------|-------------------------|
+  |---------|---------|------------------------------|-----------------------------|-------------------------|
   | Sent    | Google  | sundar.pichai@gmail.com      | walter.white@gmail.com      | jesse.pinkman@gmail.com |
   | Failed  | Netflix | michael.scofield@netflix.com | lincoln.burrows@netflix.com |
   | Pending | Apple   | steve.jobs@apple.com         |
@@ -228,10 +229,16 @@ How the code can be customized
 - Email Subject:
   > Email subject is fetch from `.env` file (line 8). You can customize it according your requirement. It's `{company}`
   placeholder is replaced with company name in `Emails.csv` if you don't want company name simply remove that
-  placeholder.
+  placeholder. (This will work but is not recommended)
     ```dotenv
     EMAIL_SUBJECT=Application for Software Engineering Internship at {company}
     ```
+    - Recommended way
+        1. Remove `{company} placeholder like above`
+        2. Update [Mail.java](src/main/java/com/email/Mail.java) `draftEmail` function first line as below
+            ```java
+            String subject = user.emailSubject();
+            ```
 
 - **[email\_body.txt](src/main/resources/email_body.txt)**: A customizable template as text file containing email body.
   > `{comapny}` in `email_body.txt` are replaced by `Emails.csv` second column values. These values are assign in the
@@ -273,15 +280,18 @@ How the code can be customized
             private static final String email = getEnv("EMAIL");
             private static final String linkedIn = getEnv("LINKEDIN");
             ```
+
         4. Update Mail.java `line 44-49` as below
            ```java
            // Replace placeholders with actual values
            String body = bodyTemplate.replace("{company}", company);
            ```
-        5. Update User.java `line 3-5` as below
-            ```java
+
+        6. Update User.java `line 3-5` as below
+           ```java
            public record User(String emailSubject, String emailBody, String resume) {}
            ```
+
   Likewise, you can remove placeholder values. If you want to add new values add your new field for every file in
   above steps.
 
@@ -305,10 +315,10 @@ How the code can be customized
             multipart.addBodyPart(bodyPart);
             multipart.addBodyPart(attachmentPart);
             mimeMessage.setContent(multipart);
-           ```
+            ```
 
         2. Paste this code line to deleted section.
-            ```java
+           ```java
            mimeMessage.setText(body, "utf-8");
            ```
 
@@ -338,10 +348,10 @@ How the code can be customized
            }
            ```
     2. Remove below line in `.env` file.
-       ```dotenv
+        ```dotenv
         # Resume file
         RESUME=resume.pdf
-       ```
+        ```
 
     3. Update [Main.java](src/main/java/com/email/Main.java) file as below.
         1. Remove below code line.
@@ -356,7 +366,7 @@ How the code can be customized
 
     4. Update [User.java](src/main/java/com/email/User.java) file like below. (Remove `String resume` in constructor)
         ```java
-       public record User(String name, String phone, String email, String linkedIn, String emailSubject, String emailBody) {}
+        public record User(String name, String phone, String email, String linkedIn, String emailSubject, String emailBody) {}
         ```
 
 - Send multiple attachments
